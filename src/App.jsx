@@ -1,10 +1,10 @@
 import Header from "./components/Header";
-import Question from "./components/Question/Question";
+import Quiz from "./components/Quiz/Quiz";
 
 function App() {
     return <main>
         <Header/>
-        <Question/>
+        <Quiz/>
     </main>
 }
 
