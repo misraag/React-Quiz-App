@@ -1,31 +1,45 @@
 import { useState } from "react";
 import Options from "../Options/Options";
-import questions from "../../questions.js";
+import QUESTIONS from "../../questions.js";
 import { AnswersContext } from "../../context/answers-context.jsx";
 
 export default function Quiz() {
-    const [selectedAnswers, setSelectedAnswers] = useState([]);
+  const [selectedAnswers, setSelectedAnswers] = useState([]);
 
-    const activeQuestion = selectedAnswers.length;
+  const activeQuestion = selectedAnswers.length;
 
-    function handleSelectingAnswer(answer) {
-        setSelectedAnswers((prev) => 
-            [answer, ...prev]
-        )
-    }
+  function handleSelectingAnswer(answer) {
+    setSelectedAnswers((prev) => [answer, ...prev]);
+  }
 
-    const answerContext = {
-        answerList: selectedAnswers,
-        onSelecting: handleSelectingAnswer
-    }
+//   const answerContext = {
+//     answerList: selectedAnswers,
+//     onSelecting: handleSelectingAnswer,
+//   };
 
-    return <AnswersContext.Provider value={answerContext} id="quiz">
-        <div id="question">
-            <progress></progress>
-            <h2>{questions[activeQuestion].text}</h2>
-        </div>
-        
-        <Options index={activeQuestion} />
-        
-    </AnswersContext.Provider>
+  function handleSelectAnswer(answer) {
+    console.log(answer)
+  }
+
+  return (
+    <div id="quiz">
+      <div id="question">
+        {/* <progress></progress> */}
+        <h2>{QUESTIONS[activeQuestion].text}</h2>
+
+      
+        <ul id="answers">
+            {
+                QUESTIONS[activeQuestion].answers.map((answer) => {
+                    return <li key={answer} className="answer">
+                        <button onClick={() => handleSelectAnswer(answer)}>{answer}</button>
+                    </li>
+                })
+            }
+        </ul>
+      </div>
+
+      {/* <Options index={activeQuestion} /> */}
+    </div>
+  );
 }

@@ -2,10 +2,14 @@ import Header from "./components/Header";
 import Quiz from "./components/Quiz/Quiz";
 
 function App() {
-    return <main>
-        <Header/>
-        <Quiz/>
-    </main>
+  return (
+    <>
+      <Header />
+      <main>
+        <Quiz />
+      </main>
+    </>
+  );
 }
 
 export default App;
