@@ -10,18 +10,16 @@ export default function Questions({
   onSelect,
 }) {
   return (
-    <div id="quiz">
-      <div id="question">
-        <Progress timeout={10000} onTimeout={onSkip}></Progress>
-        <h2>{questionText}</h2>
+    <div id="question">
+      <Progress timeout={10000} onTimeout={onSkip}></Progress>
+      <h2>{questionText}</h2>
 
-        <Answers
-          options={answers}
-          selectedAnswer={selectedAnswer}
-          answerState={answerState}
-          onSelectAnswer={onSelect}
-        />
-      </div>
+      <Answers
+        options={answers}
+        selectedAnswer={selectedAnswer}
+        answerState={answerState}
+        onSelectAnswer={onSelect}
+      />
     </div>
   );
 }

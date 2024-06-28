@@ -36,7 +36,7 @@ export default function Quiz() {
         setAnswerState("");
       }, 2000);
     }, 1000);
-  }, []);
+  }, [activeQuestionIndex]);
 
   const handleSkipAnswer = useCallback(
     () => handleSelectAnswer(null),
@@ -44,14 +44,16 @@ export default function Quiz() {
   );
 
   return (
-    <Questions
-      key={activeQuestionIndex}
-      questionText={QUESTIONS[activeQuestionIndex].text}
-      answers={[...QUESTIONS[activeQuestionIndex].answers]}
-      selectedAnswer={selectedAnswers[selectedAnswers.length - 1]}
-      answerState={answerState}
-      onSelect={handleSelectAnswer}
-      onSkip={handleSkipAnswer}
-    />
+    <div id="quiz">
+      <Questions
+        key={activeQuestionIndex}
+        questionText={QUESTIONS[activeQuestionIndex].text}
+        answers={[...QUESTIONS[activeQuestionIndex].answers]}
+        selectedAnswer={selectedAnswers[selectedAnswers.length - 1]}
+        answerState={answerState}
+        onSelect={handleSelectAnswer}
+        onSkip={handleSkipAnswer}
+      />
+    </div>
   );
 }
