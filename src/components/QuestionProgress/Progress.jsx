@@ -8,14 +8,13 @@ export default function Progress({ timeout, onTimeout }) {
     const timer = setTimeout(onTimeout, timeout);
 
     return () => {
-        clearTimeout(timer)
-    }
+      clearTimeout(timer);
+    };
   }, [timeout, onTimeout]);
 
   useEffect(() => {
     console.log("Interval started");
     const interval = setInterval(() => {
-      
       setRemainingTime((prevTime) => prevTime - 100);
     }, 100);
 
