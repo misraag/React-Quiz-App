@@ -8,14 +8,7 @@ export default function Quiz() {
 
   const activeQuestionIndex = selectedAnswers.length;
 
-  if (activeQuestionIndex === QUESTIONS.length) {
-    return (
-      <div id="summary">
-        <img src={quizCompleteImage}></img>
-        <h2>Quiz Completed!</h2>
-      </div>
-    );
-  }
+
 
   const handleSelectAnswer = useCallback(function handleSelectAnswer(answer) {
     setSelectedAnswers((prevList) => [...prevList, answer]);
@@ -25,6 +18,15 @@ export default function Quiz() {
     () => handleSelectAnswer(null),
     [handleSelectAnswer]
   );
+
+  if (activeQuestionIndex === QUESTIONS.length) {
+    return (
+      <div id="summary">
+        <img src={quizCompleteImage} alt="QUIZ COMPLETED IMAGE"></img>
+        <h2>Quiz Completed!</h2>
+      </div>
+    );
+  }
 
   return (
     <div id="quiz">
